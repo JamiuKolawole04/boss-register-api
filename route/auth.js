@@ -4,17 +4,17 @@ const User = require('../model/User');
 router.post('/register', async (req, res) => {
 
     try {
-        const { fullname, email, number, qualification, course, sex } = req.body;
+        const { fullname, email, phonenumber, qualification, course, sex } = req.body;
 
         const newUser = new User({
             fullname: fullname,
             email: email,
-            number: number,
+            phonenumber: phonenumber,
             qualification, qualification,
             course: course,
             sex: sex,
         })
-        if (!fullname || !email || !number || !qualification || !course) {
+        if (!fullname || !email || !phonenumber || !qualification || !course) {
             return res.status(400).json({ msg: 'please fill up all the form' })
         }
         const savedUser = await newUser.save();
